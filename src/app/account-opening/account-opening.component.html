@@ -1,38 +1,55 @@
 <h2>Let's get started to set up your personal digital bank account!</h2>
 <div>Please complete each step before proceeding to the next step.</div>
+
 <hr>
-<mat-vertical-stepper linear>
-  <mat-step [completed]="true">
-    <ng-template matStepLabel>Step 1: Fatca Status</ng-template>
-    <app-fatca-status></app-fatca-status>
-    <div>
-      <button mat-button matStepperNext [disabled]="false">Next</button>
-    </div>
-  </mat-step>
 
-  <mat-step [completed]="false">
-    <ng-template matStepLabel>Step 2: Personal Details</ng-template>
-    <app-personal-details></app-personal-details>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button matStepperNext [disabled]="true">Next</button>
-    </div>
-  </mat-step>
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit(f)" #f="ngForm">
 
-  <mat-step [completed]="false">
-    <ng-template matStepLabel>Step 3: Financial Details</ng-template>
-    <app-financial-details></app-financial-details>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button matStepperNext [disabled]="true">Next</button>
-    </div>
-  </mat-step>
+  <mat-vertical-stepper linear>
 
-  <mat-step [completed]="false">
-    <ng-template matStepLabel>Step 4: Reasons</ng-template>
-    <app-reason-to-open></app-reason-to-open>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-    </div>
-  </mat-step>
-</mat-vertical-stepper>
+    <mat-step [completed]="isStepCompleted(parentForm.get('fatcaStatusForm'))">
+      <ng-template matStepLabel>Step 1: Fatca Status</ng-template>
+      <app-fatca-status [parentForm]="parentForm"></app-fatca-status>
+      <div>
+        <button mat-raised-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step [completed]="true">
+      <ng-template matStepLabel>Step 2: Personal Details</ng-template>
+      <app-personal-details></app-personal-details>
+      <div>
+        <button mat-raised-button matStepperPrevious>Back</button>
+        <button mat-raised-button matStepperNext [disabled]="false">Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step [completed]="true">
+      <ng-template matStepLabel>Step 3: Financial Details</ng-template>
+      <app-financial-details></app-financial-details>
+      <div>
+        <button mat-raised-button matStepperPrevious>Back</button>
+        <button mat-raised-button matStepperNext [disabled]="false">Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step [completed]="true">
+      <ng-template matStepLabel>Step 4: Reasons</ng-template>
+      <app-reason-to-open></app-reason-to-open>
+      <div>
+        <button mat-raised-button matStepperPrevious>Back</button>
+        <button mat-raised-button matStepperNext [disabled]="false">Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step [completed]="true">
+      <ng-template matStepLabel>Step 5: Submit</ng-template>
+      <div>
+        <button mat-raised-button matStepperPrevious>Back</button>
+        <button mat-raised-button type="submit">Submit</button>
+      </div>
+    </mat-step>
+
+  </mat-vertical-stepper>
+
+</form>

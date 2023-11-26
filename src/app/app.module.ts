@@ -11,7 +11,7 @@ import { FinancialDetailsComponent } from './financial-details/financial-details
 import { ReasonToOpenComponent } from './reason-to-open/reason-to-open.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AccountOpeningComponent } from './account-opening/account-opening.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DropdownDirective } from './utilities/dropdown.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
@@ -37,6 +37,7 @@ import { HomeComponent } from './home/home.component';
     MatStepperModule,
     MatButtonModule,
     MatTooltipModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

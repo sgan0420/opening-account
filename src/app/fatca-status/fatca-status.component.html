@@ -1,8 +1,14 @@
-<h2>Before we start, let us determine your Foreign Account Tax Compliance Act (FATCA) status.</h2>
+<div [formGroup]="fatcaStatusForm">
+    <h2>Before we start, let us determine your Foreign Account Tax Compliance Act (FATCA) status.</h2>
 
-<h4><u>U.S. Indicia</u></h4>
-<p>Do you possess any of the following U.S. indicia?</p>
 
-<br>
 
-<h4><u>Tax Residency</u></h4>
+    <h4><u>U.S. Indicia</u></h4>
+    <p>Do you possess any of the following U.S. indicia?</p>
+
+    <br>
+
+    <h4><u>Tax Residency</u></h4>
+    <label for="tin">Tax Identification Number</label>
+    <input type="text" id="tin" class="form-control" formControlName="tin">
+</div>
