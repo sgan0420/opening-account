@@ -2,9 +2,8 @@
 
     <h3>Do you possess any of the following U.S. indicia?</h3>
 
-    <label for="citizenship">US citizenship/tax residency (e.g. US passport/Green Card holder, U.S. taxpayer,
-        etc.)</label>
-    <select id="citizenship" class="form-control" formControlName="citizenship">
+    <label for="citizenship">US citizenship/tax residency (e.g. US passport/Green Card holder, U.S. taxpayer, etc.)</label>
+    <select id="citizenship" class="form-control" (change)="showAttention($event.target.value)" formControlName="citizenship">
         <option>Yes</option>
         <option>No</option>
     </select>
@@ -13,7 +12,7 @@
     </small><br><br>
 
     <label for="birth">US place of birth</label>
-    <select id="birth" class="form-control" formControlName="birth">
+    <select id="birth" class="form-control" (change)="showAttention($event.target.value)" formControlName="birth">
         <option>Yes</option>
         <option>No</option>
     </select>
@@ -22,7 +21,7 @@
     </small><br><br>
 
     <label for="address">US address (e.g. residential address, mailing address, P.O. box)</label>
-    <select id="address" class="form-control" formControlName="address">
+    <select id="address" class="form-control" (change)="showAttention($event.target.value)" formControlName="address">
         <option>Yes</option>
         <option>No</option>
     </select>
@@ -32,7 +31,7 @@
     <br><br>
 
     <label for="telephone">US telephone number</label>
-    <select id="telephone" class="form-control" formControlName="telephone">
+    <select id="telephone" class="form-control" (change)="showAttention($event.target.value)" formControlName="telephone">
         <option>Yes</option>
         <option>No</option>
     </select>
@@ -45,7 +44,7 @@
     <h3>Tax Residency</h3>
 
     <label for="tax">Are you a tax resident in any jurisdiction(s)?</label>
-    <select id="tax" class="form-control" (change)="deleteAllTaxResidencies()" formControlName="tax">
+    <select id="tax" class="form-control" (change)="deleteAllTaxResidencies($event.target.value)" formControlName="tax">
         <option>Yes</option>
         <option>No</option>
     </select>
@@ -81,7 +80,5 @@
 
         <button class="btn btn-primary" (click)="addTaxResidency()">+ Create another tax residency</button>
     </div>
-
-
 
 </div>
