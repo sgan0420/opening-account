@@ -20,23 +20,35 @@ export class FatcaStatusComponent implements OnInit {
       address: ['', Validators.required],
       telephone: ['', Validators.required],
       tax: ['', Validators.required],
-      taxResidencies: this.fb.array([], Validators.required),
+      taxResidencies: this.fb.array([]),
     });
     this.parentForm.addControl('fatcaStatusForm', this.fatcaStatusForm);
-    this.addTaxResidencies();
   }
 
   get taxResidencies() {
-    return this.fatcaStatusForm.controls["taxResidencies"] as FormArray;
+    return this.fatcaStatusForm.controls['taxResidencies'] as FormArray;
   }
 
-  addTaxResidencies() {
+  addTaxResidency() {
     const taxResidency = this.fb.group({
       jurisdiction: ['', Validators.required],
       tin: ['', Validators.required]
     });
     this.taxResidencies.push(taxResidency);
   }
-  
+
+  deleteTaxResidency(index: number) {
+    this.taxResidencies.removeAt(index);
+  }
+
+  deleteAllTaxResidencies() {
+    if (this.fatcaStatusForm.controls['tax'].value === 'No') {
+      while (this.taxResidencies.length !== 0) {
+        this.taxResidencies.removeAt(0);
+      }
+    } else {
+      this.addTaxResidency();
+    }
+  }
 
 }

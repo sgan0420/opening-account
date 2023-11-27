@@ -45,7 +45,7 @@
     <h3>Tax Residency</h3>
 
     <label for="tax">Are you a tax resident in any jurisdiction(s)?</label>
-    <select id="tax" class="form-control" formControlName="tax">
+    <select id="tax" class="form-control" (change)="deleteAllTaxResidencies()" formControlName="tax">
         <option>Yes</option>
         <option>No</option>
     </select>
@@ -55,23 +55,31 @@
 
     <div formArrayName="taxResidencies" *ngIf="fatcaStatusForm.get('tax').value === 'Yes'">
         <div *ngFor="let taxResidency of taxResidencies.controls; let i = index" [formGroupName]="i">
-            <h3>Tax Residency # {{ i+1 }}</h3>
-            <label for="jurisdiction">Jurisdiction of Residence for Tax Purposes</label>
-            <select id="jurisdiction" class="form-control" formControlName="jurisdiction">
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-            </select>
-            <small [style.color]="'red'" *ngIf="taxResidency.get('jurisdiction').hasError('required')">
-                * Please select.
-            </small><br><br>
-            <label for="tin">Tax Identification Number</label>
-            <input placeholder="Tax Identification Number" type="text" id="tin" class="form-control" formControlName="tin">
-            <small [style.color]="'red'" *ngIf="taxResidency.get('tin').hasError('required')">
-                * Please fill.
-            </small><br><br>
+            <div class="individual-tax">
+                <h3 display="flex">
+                    Tax Residency #{{ i + 1 }}
+                    <button class="btn btn-danger" (click)="deleteTaxResidency(i)" *ngIf="i >= 1">
+                        <i class="material-icons" style="font-size:20px">delete</i>
+                    </button>
+                </h3>
+                <label for="jurisdiction">Jurisdiction of Residence for Tax Purposes</label>
+                <select id="jurisdiction" class="form-control" formControlName="jurisdiction">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                <small [style.color]="'red'" *ngIf="taxResidency.get('jurisdiction').hasError('required')">
+                    * Please select.
+                </small><br><br>
+                <label for="tin">Tax Identification Number</label>
+                <input placeholder="Tax Identification Number" type="text" id="tin" class="form-control"
+                    formControlName="tin">
+                <small [style.color]="'red'" *ngIf="taxResidency.get('tin').hasError('required')">
+                    * Please fill.
+                </small><br><br>
+            </div>
         </div>
 
-        <button class="btn btn-primary" (click)="addTaxResidencies()">+ Create another tax residency</button>
+        <button class="btn btn-primary" (click)="addTaxResidency()">+ Create another tax residency</button>
     </div>
 
 
