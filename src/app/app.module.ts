@@ -16,6 +16,9 @@ import { DropdownDirective } from './utilities/dropdown.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzFormModule } from 'ng-zorro-antd/form';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,9 @@ import { HomeComponent } from './home/home.component';
     MatButtonModule,
     MatTooltipModule,
     ReactiveFormsModule,
+    MatFormFieldModule,
+    NzInputModule,
+    NzFormModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

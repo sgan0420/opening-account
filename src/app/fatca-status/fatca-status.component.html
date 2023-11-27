@@ -1,14 +1,79 @@
 <div [formGroup]="fatcaStatusForm">
-    <h2>Before we start, let us determine your Foreign Account Tax Compliance Act (FATCA) status.</h2>
+
+    <h3>Do you possess any of the following U.S. indicia?</h3>
+
+    <label for="citizenship">US citizenship/tax residency (e.g. US passport/Green Card holder, U.S. taxpayer,
+        etc.)</label>
+    <select id="citizenship" class="form-control" formControlName="citizenship">
+        <option>Yes</option>
+        <option>No</option>
+    </select>
+    <small [style.color]="'red'" *ngIf="fatcaStatusForm.get('citizenship').hasError('required')">
+        * Please select.
+    </small><br><br>
+
+    <label for="birth">US place of birth</label>
+    <select id="birth" class="form-control" formControlName="birth">
+        <option>Yes</option>
+        <option>No</option>
+    </select>
+    <small [style.color]="'red'" *ngIf="fatcaStatusForm.get('birth').hasError('required')">
+        * Please select.
+    </small><br><br>
+
+    <label for="address">US address (e.g. residential address, mailing address, P.O. box)</label>
+    <select id="address" class="form-control" formControlName="address">
+        <option>Yes</option>
+        <option>No</option>
+    </select>
+    <small [style.color]="'red'" *ngIf="fatcaStatusForm.get('address').hasError('required')">
+        * Please select.
+    </small>
+    <br><br>
+
+    <label for="telephone">US telephone number</label>
+    <select id="telephone" class="form-control" formControlName="telephone">
+        <option>Yes</option>
+        <option>No</option>
+    </select>
+    <small [style.color]="'red'" *ngIf="fatcaStatusForm.get('telephone').hasError('required')">
+        * Please select.
+    </small><br><br>
+
+    <hr>
+
+    <h3>Tax Residency</h3>
+
+    <label for="tax">Are you a tax resident in any jurisdiction(s)?</label>
+    <select id="tax" class="form-control" formControlName="tax">
+        <option>Yes</option>
+        <option>No</option>
+    </select>
+    <small [style.color]="'red'" *ngIf="fatcaStatusForm.get('tax').hasError('required')">
+        * Please select.
+    </small><br><br>
+
+    <div formArrayName="taxResidencies" *ngIf="fatcaStatusForm.get('tax').value === 'Yes'">
+        <div *ngFor="let taxResidency of taxResidencies.controls; let i = index" [formGroupName]="i">
+            <h3>Tax Residency # {{ i+1 }}</h3>
+            <label for="jurisdiction">Jurisdiction of Residence for Tax Purposes</label>
+            <select id="jurisdiction" class="form-control" formControlName="jurisdiction">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            <small [style.color]="'red'" *ngIf="taxResidency.get('jurisdiction').hasError('required')">
+                * Please select.
+            </small><br><br>
+            <label for="tin">Tax Identification Number</label>
+            <input placeholder="Tax Identification Number" type="text" id="tin" class="form-control" formControlName="tin">
+            <small [style.color]="'red'" *ngIf="taxResidency.get('tin').hasError('required')">
+                * Please fill.
+            </small><br><br>
+        </div>
+
+        <button class="btn btn-primary" (click)="addTaxResidencies()">+ Create another tax residency</button>
+    </div>
 
 
 
-    <h4><u>U.S. Indicia</u></h4>
-    <p>Do you possess any of the following U.S. indicia?</p>
-
-    <br>
-
-    <h4><u>Tax Residency</u></h4>
-    <label for="tin">Tax Identification Number</label>
-    <input type="text" id="tin" class="form-control" formControlName="tin">
 </div>

@@ -10,40 +10,45 @@
     <mat-step [completed]="isStepCompleted(parentForm.get('fatcaStatusForm'))">
       <ng-template matStepLabel>Step 1: Fatca Status</ng-template>
       <app-fatca-status [parentForm]="parentForm"></app-fatca-status>
+      <hr>
       <div>
+        <button mat-raised-button matStepperNext [disabled]="!isStepCompleted(parentForm.get('fatcaStatusForm'))">Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step [completed]="isStepCompleted(parentForm.get('personalDetailsForm'))">
+      <ng-template matStepLabel>Step 2: Personal Details</ng-template>
+      <app-personal-details [parentForm]="parentForm"></app-personal-details>
+      <hr>
+      <div>
+        <button mat-raised-button matStepperPrevious>Back</button>
+        <button mat-raised-button matStepperNext [disabled]="!isStepCompleted(parentForm.get('personalDetailsForm'))">Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Step 3: Financial Details</ng-template>
+      <app-financial-details [parentForm]="parentForm"></app-financial-details>
+      <hr>
+      <div>
+        <button mat-raised-button matStepperPrevious>Back</button>
         <button mat-raised-button matStepperNext>Next</button>
       </div>
     </mat-step>
 
-    <mat-step [completed]="true">
-      <ng-template matStepLabel>Step 2: Personal Details</ng-template>
-      <app-personal-details></app-personal-details>
+    <mat-step>
+      <ng-template matStepLabel>Step 4: Reasons To Open</ng-template>
+      <app-reason-to-open [parentForm]="parentForm"></app-reason-to-open>
+      <hr>
       <div>
         <button mat-raised-button matStepperPrevious>Back</button>
-        <button mat-raised-button matStepperNext [disabled]="false">Next</button>
+        <button mat-raised-button matStepperNext>Next</button>
       </div>
     </mat-step>
 
-    <mat-step [completed]="true">
-      <ng-template matStepLabel>Step 3: Financial Details</ng-template>
-      <app-financial-details></app-financial-details>
-      <div>
-        <button mat-raised-button matStepperPrevious>Back</button>
-        <button mat-raised-button matStepperNext [disabled]="false">Next</button>
-      </div>
-    </mat-step>
-
-    <mat-step [completed]="true">
-      <ng-template matStepLabel>Step 4: Reasons</ng-template>
-      <app-reason-to-open></app-reason-to-open>
-      <div>
-        <button mat-raised-button matStepperPrevious>Back</button>
-        <button mat-raised-button matStepperNext [disabled]="false">Next</button>
-      </div>
-    </mat-step>
-
-    <mat-step [completed]="true">
+    <mat-step [completed]="isStepCompleted(parentForm)">
       <ng-template matStepLabel>Step 5: Submit</ng-template>
+      <hr>
       <div>
         <button mat-raised-button matStepperPrevious>Back</button>
         <button mat-raised-button type="submit">Submit</button>
