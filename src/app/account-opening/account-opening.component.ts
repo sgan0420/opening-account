@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -11,25 +11,25 @@ export class AccountOpeningComponent {
 
   parentForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private cdr: ChangeDetectorRef) { }
+
+  ngOnInit(): void {
+    this.parentForm = this.fb.group({});
+    this.cdr.detectChanges();
+    console.log(this.parentForm);
+  }
 
   onSubmit(f: NgForm) {
-    console.log(f);
     if (this.parentForm.valid) {
-      // Submit the form
       console.log('Form submitted:', this.parentForm.value);
     } else {
       console.log('Form is invalid. Please fill out the required fields.');
     }
-  }
-
-  ngOnInit(): void {
-    this.parentForm = this.fb.group({});
+    sessionStorage.setItem('fatcaStatusData', JSON.stringify(this.parentForm.get('fatcaStatusForm').value));
   }
 
   isStepCompleted(form) {
     return form ? form.valid : false;
   }
-  
 
 }

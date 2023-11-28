@@ -3,7 +3,8 @@
     <h3>Do you possess any of the following U.S. indicia?</h3>
 
     <label for="citizenship">US citizenship/tax residency (e.g. US passport/Green Card holder, U.S. taxpayer, etc.)</label>
-    <select id="citizenship" class="form-control" (change)="showAttention($event.target.value)" formControlName="citizenship">
+    <select id="citizenship" class="form-control" (change)="showAttention($event.target.value)"
+        formControlName="citizenship">
         <option>Yes</option>
         <option>No</option>
     </select>
@@ -31,7 +32,8 @@
     <br><br>
 
     <label for="telephone">US telephone number</label>
-    <select id="telephone" class="form-control" (change)="showAttention($event.target.value)" formControlName="telephone">
+    <select id="telephone" class="form-control" (change)="showAttention($event.target.value)"
+        formControlName="telephone">
         <option>Yes</option>
         <option>No</option>
     </select>
@@ -61,6 +63,7 @@
                         <i class="material-icons" style="font-size:20px">delete</i>
                     </button>
                 </h3>
+
                 <label for="jurisdiction">Jurisdiction of Residence for Tax Purposes</label>
                 <select id="jurisdiction" class="form-control" formControlName="jurisdiction">
                     <option value="Yes">Yes</option>
@@ -69,6 +72,7 @@
                 <small [style.color]="'red'" *ngIf="taxResidency.get('jurisdiction').hasError('required')">
                     * Please select.
                 </small><br><br>
+                
                 <label for="tin">Tax Identification Number</label>
                 <input placeholder="Tax Identification Number" type="text" id="tin" class="form-control"
                     formControlName="tin">
