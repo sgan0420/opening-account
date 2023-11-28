@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DataStorageService } from '../utilities/data-storage.service';
 
 @Component({
   selector: 'app-account-opening',
@@ -10,22 +11,27 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AccountOpeningComponent {
 
   parentForm: FormGroup;
+  steps = [
+    { label: 'Fatca Status', form: 'fatcaStatusForm' },
+    { label: 'Personal Details', form: 'personalDetailsForm' },
+    { label: 'Financial Details', form: 'financialDetailsForm' },
+    { label: 'Reasons To Open', form: 'reasonToOpenForm' },
+  ];
 
-  constructor(private fb: FormBuilder, private cdr: ChangeDetectorRef) { }
+  constructor(private fb: FormBuilder, private cdr: ChangeDetectorRef, private dss: DataStorageService) { }
 
   ngOnInit(): void {
     this.parentForm = this.fb.group({});
     this.cdr.detectChanges();
-    console.log(this.parentForm);
   }
 
   onSubmit(f: NgForm) {
     if (this.parentForm.valid) {
-      console.log('Form submitted:', this.parentForm.value);
+      console.log('Complete form submitted:', this.parentForm.value);
     } else {
-      console.log('Form is invalid. Please fill out the required fields.');
+      console.log('Incomplete form saved:', this.parentForm.value);
     }
-    sessionStorage.setItem('fatcaStatusData', JSON.stringify(this.parentForm.get('fatcaStatusForm').value));
+    this.dss.storeData(this.parentForm);
   }
 
   isStepCompleted(form) {

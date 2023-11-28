@@ -19,6 +19,8 @@ import { HomeComponent } from './home/home.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzFormModule } from 'ng-zorro-antd/form';
+import { DataStorageService } from './utilities/data-storage.service';
+import { YesNoSelectorComponent } from './yes-no-selector/yes-no-selector.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
     DropdownDirective,
     HeaderComponent,
     HomeComponent,
+    YesNoSelectorComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
     NzInputModule,
     NzFormModule,
   ],
-  providers: [],
+  providers: [DataStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
