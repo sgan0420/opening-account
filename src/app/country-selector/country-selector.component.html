@@ -2,9 +2,11 @@
     <mat-label>{{ label }}</mat-label>
     <input matInput placeholder="Select a country" [formControl]="control" [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let country of filteredCountries | async" [value]="country"><span>{{ country }}</span></mat-option>
+        <mat-option *ngFor="let country of filteredCountries | async" [value]="country">
+            {{ country }}
+        </mat-option>
     </mat-autocomplete>
     <mat-error *ngIf="control.hasError('required')">
         * Please select.
     </mat-error>
-</mat-form-field>   
+</mat-form-field>

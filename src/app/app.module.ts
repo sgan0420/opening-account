@@ -25,6 +25,7 @@ import { DataStorageService } from './utilities/data-storage.service';
 import { YesNoSelectorComponent } from './yes-no-selector/yes-no-selector.component';
 import { CountrySelectorComponent } from './country-selector/country-selector.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatAutocompleteModule,
     MatInputModule,
     MatSelectModule,
+    MatIconModule,
   ],
   providers: [DataStorageService],
   bootstrap: [AppComponent]

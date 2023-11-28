@@ -21,8 +21,8 @@
         <hr>
 
         <div>
-          <button mat-raised-button matStepperPrevious *ngIf="i>=1">Back</button>
-          <button mat-raised-button matStepperNext [disabled]="!isStepCompleted(parentForm.get(step.form))">Save &
+          <button mat-raised-button matStepperPrevious color="accent" *ngIf="i>=1">Back</button>
+          <button mat-raised-button matStepperNext color="primary" [disabled]="!isStepCompleted(parentForm.get(step.form))">Save &
             Continue</button>
         </div>
       </mat-step>
@@ -33,7 +33,7 @@
       <hr>
       <div>
         <button mat-raised-button matStepperPrevious>Back</button>
-        <button mat-raised-button type="submit">Submit</button>
+        <button mat-raised-button color="primary" type="submit">Submit</button>
       </div>
     </mat-step>
 

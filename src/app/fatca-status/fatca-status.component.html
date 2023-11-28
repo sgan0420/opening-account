@@ -31,9 +31,9 @@
             <div class="individual-tax">
                 <h3 display="flex">
                     Tax Residency #{{ i + 1 }}
-                    <button class="btn btn-danger" (click)="deleteTaxResidency(i)" *ngIf="i >= 1"
+                    <button mat-mini-fab color="warn" (click)="deleteTaxResidency(i)" *ngIf="i >= 1"
                         style="margin-left: 10px;">
-                        <i class="material-icons" style="font-size:18px">delete</i>
+                        <mat-icon>delete</mat-icon>
                     </button>
                 </h3>
 
@@ -50,7 +50,7 @@
                 </mat-form-field>
             </div>
         </div>
-        <button class="btn btn-primary" (click)="addTaxResidency('', '')">+ Create another tax residency</button>
+        <button mat-stroked-button (click)="addTaxResidency('', '')">+ Create another tax residency</button>
     </div>
 
 </div>
