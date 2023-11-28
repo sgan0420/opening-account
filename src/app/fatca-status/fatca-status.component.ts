@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { DataStorageService } from '../utilities/data-storage.service';
 
@@ -17,10 +17,10 @@ export class FatcaStatusComponent implements OnInit {
 
   ngOnInit(): void {
     this.fatcaStatusForm = this.fb.group({
-      citizenship: ['', Validators.required],
-      birth: ['', Validators.required],
-      address: ['', Validators.required],
-      telephone: ['', Validators.required],
+      citizenship: ['', [Validators.required, this.allowedValidator(['No'])]],
+      birth: ['', [Validators.required, this.allowedValidator(['No'])]],
+      address: ['', [Validators.required, this.allowedValidator(['No'])]],
+      telephone: ['', [Validators.required, this.allowedValidator(['No'])]],
       tax: ['', Validators.required],
       taxResidencies: this.fb.array([]),
     });
@@ -34,6 +34,16 @@ export class FatcaStatusComponent implements OnInit {
       );
     }
     this.parentForm.addControl('fatcaStatusForm', this.fatcaStatusForm);
+  }
+
+  allowedValidator(allowedValues: string[]) {
+    return (control: AbstractControl): ValidationErrors | null => {
+      if (allowedValues.includes(control.value)) {
+        return null;
+      } else {
+        return { invalidValue: true };
+      }
+    };
   }
 
   get taxResidencies() {
