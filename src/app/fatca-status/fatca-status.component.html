@@ -2,37 +2,27 @@
 
     <h3>Do you possess any of the following U.S. indicia?</h3>
 
-    <app-yes-no-selector 
-        label="US citizenship/tax residency (e.g. US passport/Green Card holder, U.S. taxpayer, etc.)" 
-        [control]="fatcaStatusForm.get('citizenship')"
+    <app-yes-no-selector label="US citizenship/tax residency (e.g. US passport/Green Card holder, U.S. taxpayer, etc.)"
+        [control]="fatcaStatusForm.get('citizenship')" (selectionChange)="showAttention($event)">
+    </app-yes-no-selector>
+
+    <app-yes-no-selector label="US place of birth" [control]="fatcaStatusForm.get('birth')"
         (selectionChange)="showAttention($event)">
     </app-yes-no-selector>
 
-    <app-yes-no-selector 
-        label="US place of birth" 
-        [control]="fatcaStatusForm.get('birth')"
-        (selectionChange)="showAttention($event)">
+    <app-yes-no-selector label="US address (e.g. residential address, mailing address, P.O. box)"
+        [control]="fatcaStatusForm.get('address')" (selectionChange)="showAttention($event)">
     </app-yes-no-selector>
 
-    <app-yes-no-selector 
-        label="US address (e.g. residential address, mailing address, P.O. box)" 
-        [control]="fatcaStatusForm.get('address')"
-        (selectionChange)="showAttention($event)">
-    </app-yes-no-selector>
-
-    <app-yes-no-selector 
-        label="US telephone number" 
-        [control]="fatcaStatusForm.get('telephone')"
+    <app-yes-no-selector label="US telephone number" [control]="fatcaStatusForm.get('telephone')"
         (selectionChange)="showAttention($event)">
     </app-yes-no-selector>
 
     <hr>
     <h3>Tax Residency</h3>
 
-    
-    <app-yes-no-selector 
-        label="Are you a tax resident in any jurisdiction(s)?" 
-        [control]="fatcaStatusForm.get('tax')"
+
+    <app-yes-no-selector label="Are you a tax resident in any jurisdiction(s)?" [control]="fatcaStatusForm.get('tax')"
         (selectionChange)="deleteAllTaxResidencies($event)">
     </app-yes-no-selector>
 
@@ -45,15 +35,10 @@
                         <i class="material-icons" style="font-size:20px">delete</i>
                     </button>
                 </h3>
-                
-                <label for="jurisdiction">Jurisdiction of Residence for Tax Purposes</label>
-                <select id="jurisdiction" class="form-control" formControlName="jurisdiction">
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                </select>
-                <small [style.color]="'red'" *ngIf="taxResidency.get('jurisdiction').hasError('required')">
-                    * Please select.
-                </small><br><br>
+
+                <app-country-selector label="Jurisdiction of Residence for Tax Purposes"
+                    [control]="taxResidency.get('jurisdiction')">
+                </app-country-selector>
 
                 <label for="tin">Tax Identification Number</label>
                 <input placeholder="Tax Identification Number" type="text" id="tin" class="form-control"

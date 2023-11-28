@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatInputModule } from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 
 import { AppComponent } from './app.component';
 import { FatcaStatusComponent } from './fatca-status/fatca-status.component';
@@ -22,6 +24,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { DataStorageService } from './utilities/data-storage.service';
 import { YesNoSelectorComponent } from './yes-no-selector/yes-no-selector.component';
 import { CountrySelectorComponent } from './country-selector/country-selector.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,9 @@ import { CountrySelectorComponent } from './country-selector/country-selector.co
     MatFormFieldModule,
     NzInputModule,
     NzFormModule,
+    MatAutocompleteModule,
+    MatInputModule,
+    MatSelectModule,
   ],
   providers: [DataStorageService],
   bootstrap: [AppComponent]
