@@ -1,12 +1,12 @@
 <mat-form-field style="width: 100%">
     <mat-label>{{ label }}</mat-label>
-    <input matInput placeholder="Select a country" [formControl]="control" [matAutocomplete]="auto">
+    <input matInput appAlphabetOnly placeholder="Select a country" [formControl]="control" [matAutocomplete]="auto" (blur)="clearInvalidInput()">
     <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let country of filteredCountries | async" [value]="country">
             {{ country }}
         </mat-option>
     </mat-autocomplete>
     <mat-error *ngIf="control.hasError('required')">
-        *Please select.
+        *Please select a country.
     </mat-error>
 </mat-form-field>

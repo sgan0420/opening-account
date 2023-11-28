@@ -29,6 +29,12 @@ export class CountrySelectorComponent implements OnInit {
     const filterValue = value.toLowerCase();
     return this.countries.filter((country) => country.toLowerCase().indexOf(filterValue) === 0);
   }
+  
+  clearInvalidInput() {
+    if (!this.countries.includes(this.control.value)) {
+      this.control.setValue(null);
+    }
+  }
 
 }
 

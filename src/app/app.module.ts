@@ -5,7 +5,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-
 import { AppComponent } from './app.component';
 import { FatcaStatusComponent } from './fatca-status/fatca-status.component';
 import { PersonalDetailsComponent } from './personal-details/personal-details.component';
@@ -26,6 +25,7 @@ import { YesNoSelectorComponent } from './user-interface/yes-no-selector/yes-no-
 import { CountrySelectorComponent } from './user-interface/country-selector/country-selector.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatIconModule } from '@angular/material/icon';
+import { AlphabetOnlyDirective } from './utilities/alphabet-only.directive';
 
 @NgModule({
   declarations: [
@@ -40,6 +40,7 @@ import { MatIconModule } from '@angular/material/icon';
     HomeComponent,
     YesNoSelectorComponent,
     CountrySelectorComponent,
+    AlphabetOnlyDirective,
   ],
   imports: [
     BrowserModule,
