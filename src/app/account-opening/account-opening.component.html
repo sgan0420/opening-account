@@ -21,7 +21,7 @@
         <hr>
 
         <div>
-          <button mat-raised-button matStepperPrevious color="accent" *ngIf="i>=1">Back</button>
+          <button mat-raised-button matStepperPrevious color="accent" *ngIf="i>=1" style="margin-right: 15px;">Back</button>
           <button mat-raised-button matStepperNext color="primary" [disabled]="!isStepCompleted(parentForm.get(step.form))">Save &
             Continue</button>
         </div>

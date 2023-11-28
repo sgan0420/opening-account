@@ -1,10 +1,5 @@
 <div [formGroup]="personalDetailsForm">
 
     <h3>Contact Information</h3>
-    <label for="mobile">Mobile Number</label>
-    <input placeholder="Mobile Number" type="text" id="mobile" class="form-control" formControlName="mobile">
-    <mat-error *ngIf="personalDetailsForm.get('mobile').hasError('required')">
-        *required field
-    </mat-error>
 
 </div>
