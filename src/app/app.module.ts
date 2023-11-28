@@ -22,8 +22,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { DataStorageService } from './utilities/data-storage.service';
-import { YesNoSelectorComponent } from './yes-no-selector/yes-no-selector.component';
-import { CountrySelectorComponent } from './country-selector/country-selector.component';
+import { YesNoSelectorComponent } from './user-interface/yes-no-selector/yes-no-selector.component';
+import { CountrySelectorComponent } from './user-interface/country-selector/country-selector.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatIconModule } from '@angular/material/icon';
 
