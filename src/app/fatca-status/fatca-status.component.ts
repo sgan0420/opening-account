@@ -1,7 +1,9 @@
-import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { DataStorageService } from '../utilities/data-storage.service';
+import { CountrySelectorComponent } from '../user-interface/country-selector/country-selector.component';
+import { CountryDataService } from '../utilities/country-data.service';
 
 @Component({
   selector: 'app-fatca-status',
@@ -13,7 +15,7 @@ export class FatcaStatusComponent implements OnInit {
   @Input() parentForm: FormGroup;
   fatcaStatusForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private dss: DataStorageService) { }
+  constructor(private fb: FormBuilder, private dss: DataStorageService, private cds: CountryDataService) { }
 
   ngOnInit(): void {
     this.fatcaStatusForm = this.fb.group({
@@ -52,7 +54,7 @@ export class FatcaStatusComponent implements OnInit {
 
   addTaxResidency(newJurisdiction: string, newTin: string) {
     const taxResidency = this.fb.group({
-      jurisdiction: [newJurisdiction, Validators.required],
+      jurisdiction: [newJurisdiction, [Validators.required, this.allowedValidator(this.cds.getCountries())]],
       tin: [newTin, Validators.required]
     });
     this.taxResidencies.push(taxResidency);

@@ -25,6 +25,7 @@ import { CountrySelectorComponent } from './user-interface/country-selector/coun
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatIconModule } from '@angular/material/icon';
 import { AlphabetOnlyDirective } from './utilities/alphabet-only.directive';
+import { CountryDataService } from './utilities/country-data.service';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,10 @@ import { AlphabetOnlyDirective } from './utilities/alphabet-only.directive';
     MatSelectModule,
     MatIconModule,
   ],
-  providers: [DataStorageService],
+  providers: [
+    DataStorageService,
+    CountryDataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
