@@ -1,27 +1,33 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-country-selector',
   templateUrl: './country-selector.component.html',
   styleUrl: './country-selector.component.css'
 })
-export class CountrySelectorComponent {
+export class CountrySelectorComponent implements OnInit {
 
   @Input() label: string;
-  @Input() control: FormControl;
+  @Input() control: FormControl = new FormControl();
 
-  countries = ['Malaysia', 'Singapore', 'UK'];
+  countries: string[] = ['China', 'Malaysia', 'Singapore', 'United Kingdom'];
+  filteredCountries: Observable<string[]>;
 
   constructor() { }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.countries.filter((country) => country.toLowerCase().includes(filterValue));
+  ngOnInit(): void {
+    this.filteredCountries = this.control.valueChanges.pipe(
+      startWith(''),
+      map(country => country ? this._filter(country) : this.countries.slice())
+    );
   }
 
-  displayFn(country: string): string {
-    return country;
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.countries.filter((country) => country.toLowerCase().indexOf(filterValue) === 0);
   }
 
 }

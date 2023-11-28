@@ -60,12 +60,9 @@ export class FatcaStatusComponent implements OnInit {
     } else {
       this.addTaxResidency('', '');
     }
-    console.log('delete');
   }
 
   showAttention(selectedValue: string) {
-    console.log('alert');
-
     if (selectedValue === 'Yes') {
       Swal.fire({
         title: 'Attention',
