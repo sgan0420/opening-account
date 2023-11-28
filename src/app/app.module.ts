@@ -13,7 +13,6 @@ import { ReasonToOpenComponent } from './reason-to-open/reason-to-open.component
 import { AppRoutingModule } from './app-routing.module';
 import { AccountOpeningComponent } from './account-opening/account-opening.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DropdownDirective } from './utilities/dropdown.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
@@ -35,7 +34,6 @@ import { AlphabetOnlyDirective } from './utilities/alphabet-only.directive';
     FinancialDetailsComponent,
     ReasonToOpenComponent,
     AccountOpeningComponent,
-    DropdownDirective,
     HeaderComponent,
     HomeComponent,
     YesNoSelectorComponent,
