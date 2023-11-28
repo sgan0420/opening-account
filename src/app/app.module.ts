@@ -21,6 +21,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { DataStorageService } from './utilities/data-storage.service';
 import { YesNoSelectorComponent } from './yes-no-selector/yes-no-selector.component';
+import { CountrySelectorComponent } from './country-selector/country-selector.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { YesNoSelectorComponent } from './yes-no-selector/yes-no-selector.compon
     HeaderComponent,
     HomeComponent,
     YesNoSelectorComponent,
+    CountrySelectorComponent,
   ],
   imports: [
     BrowserModule,

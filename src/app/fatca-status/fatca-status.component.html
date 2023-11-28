@@ -27,17 +27,14 @@
     </app-yes-no-selector>
 
     <hr>
-
     <h3>Tax Residency</h3>
 
-    <label for="tax">Are you a tax resident in any jurisdiction(s)?</label>
-    <select id="tax" class="form-control" (change)="deleteAllTaxResidencies($event.target.value)" formControlName="tax">
-        <option>Yes</option>
-        <option>No</option>
-    </select>
-    <small [style.color]="'red'" *ngIf="fatcaStatusForm.get('tax').hasError('required')">
-        * Please select.
-    </small><br><br>
+    
+    <app-yes-no-selector 
+        label="Are you a tax resident in any jurisdiction(s)?" 
+        [control]="fatcaStatusForm.get('tax')"
+        (selectionChange)="deleteAllTaxResidencies($event)">
+    </app-yes-no-selector>
 
     <div formArrayName="taxResidencies" *ngIf="fatcaStatusForm.get('tax').value === 'Yes'">
         <div *ngFor="let taxResidency of taxResidencies.controls; let i = index" [formGroupName]="i">
@@ -66,7 +63,7 @@
                 </small><br><br>
             </div>
         </div>
-        <button class="btn btn-primary" (click)="addTaxResidency()">+ Create another tax residency</button>
+        <button class="btn btn-primary" (click)="addTaxResidency('', '')">+ Create another tax residency</button>
     </div>
 
 </div>

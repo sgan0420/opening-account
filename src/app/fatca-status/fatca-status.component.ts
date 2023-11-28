@@ -25,6 +25,14 @@ export class FatcaStatusComponent implements OnInit {
       taxResidencies: this.fb.array([]),
     });
     this.dss.patchStoredData(this.fatcaStatusForm, 'fatcaStatusData');
+    const storedTaxResidencies = JSON.parse(sessionStorage.getItem('taxResidenciesData')) as Array<{ jurisdiction: string, tin: string }>;
+    if (storedTaxResidencies) {
+      storedTaxResidencies.forEach(
+        taxResidency => {
+          this.addTaxResidency(taxResidency.jurisdiction, taxResidency.tin);
+        }
+      );
+    }
     this.parentForm.addControl('fatcaStatusForm', this.fatcaStatusForm);
   }
 
@@ -32,10 +40,10 @@ export class FatcaStatusComponent implements OnInit {
     return this.fatcaStatusForm.controls['taxResidencies'] as FormArray;
   }
 
-  addTaxResidency() {
+  addTaxResidency(newJurisdiction: string, newTin: string) {
     const taxResidency = this.fb.group({
-      jurisdiction: ['', Validators.required],
-      tin: ['', Validators.required]
+      jurisdiction: [newJurisdiction, Validators.required],
+      tin: [newTin, Validators.required]
     });
     this.taxResidencies.push(taxResidency);
   }
@@ -50,11 +58,14 @@ export class FatcaStatusComponent implements OnInit {
         this.taxResidencies.removeAt(0);
       }
     } else {
-      this.addTaxResidency();
+      this.addTaxResidency('', '');
     }
+    console.log('delete');
   }
 
   showAttention(selectedValue: string) {
+    console.log('alert');
+
     if (selectedValue === 'Yes') {
       Swal.fire({
         title: 'Attention',
