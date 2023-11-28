@@ -2,44 +2,29 @@
 
     <h3>Do you possess any of the following U.S. indicia?</h3>
 
-    <label for="citizenship">US citizenship/tax residency (e.g. US passport/Green Card holder, U.S. taxpayer, etc.)</label>
-    <select id="citizenship" class="form-control" (change)="showAttention($event.target.value)"
-        formControlName="citizenship">
-        <option>Yes</option>
-        <option>No</option>
-    </select>
-    <small [style.color]="'red'" *ngIf="fatcaStatusForm.get('citizenship').hasError('required')">
-        * Please select.
-    </small><br><br>
+    <app-yes-no-selector 
+        label="US citizenship/tax residency (e.g. US passport/Green Card holder, U.S. taxpayer, etc.)" 
+        [control]="fatcaStatusForm.get('citizenship')"
+        (selectionChange)="showAttention($event)">
+    </app-yes-no-selector>
 
-    <label for="birth">US place of birth</label>
-    <select id="birth" class="form-control" (change)="showAttention($event.target.value)" formControlName="birth">
-        <option>Yes</option>
-        <option>No</option>
-    </select>
-    <small [style.color]="'red'" *ngIf="fatcaStatusForm.get('birth').hasError('required')">
-        * Please select.
-    </small><br><br>
+    <app-yes-no-selector 
+        label="US place of birth" 
+        [control]="fatcaStatusForm.get('birth')"
+        (selectionChange)="showAttention($event)">
+    </app-yes-no-selector>
 
-    <label for="address">US address (e.g. residential address, mailing address, P.O. box)</label>
-    <select id="address" class="form-control" (change)="showAttention($event.target.value)" formControlName="address">
-        <option>Yes</option>
-        <option>No</option>
-    </select>
-    <small [style.color]="'red'" *ngIf="fatcaStatusForm.get('address').hasError('required')">
-        * Please select.
-    </small>
-    <br><br>
+    <app-yes-no-selector 
+        label="US address (e.g. residential address, mailing address, P.O. box)" 
+        [control]="fatcaStatusForm.get('address')"
+        (selectionChange)="showAttention($event)">
+    </app-yes-no-selector>
 
-    <label for="telephone">US telephone number</label>
-    <select id="telephone" class="form-control" (change)="showAttention($event.target.value)"
-        formControlName="telephone">
-        <option>Yes</option>
-        <option>No</option>
-    </select>
-    <small [style.color]="'red'" *ngIf="fatcaStatusForm.get('telephone').hasError('required')">
-        * Please select.
-    </small><br><br>
+    <app-yes-no-selector 
+        label="US telephone number" 
+        [control]="fatcaStatusForm.get('telephone')"
+        (selectionChange)="showAttention($event)">
+    </app-yes-no-selector>
 
     <hr>
 
@@ -63,7 +48,7 @@
                         <i class="material-icons" style="font-size:20px">delete</i>
                     </button>
                 </h3>
-
+                
                 <label for="jurisdiction">Jurisdiction of Residence for Tax Purposes</label>
                 <select id="jurisdiction" class="form-control" formControlName="jurisdiction">
                     <option value="Yes">Yes</option>
@@ -72,7 +57,7 @@
                 <small [style.color]="'red'" *ngIf="taxResidency.get('jurisdiction').hasError('required')">
                     * Please select.
                 </small><br><br>
-                
+
                 <label for="tin">Tax Identification Number</label>
                 <input placeholder="Tax Identification Number" type="text" id="tin" class="form-control"
                     formControlName="tin">
@@ -81,7 +66,6 @@
                 </small><br><br>
             </div>
         </div>
-
         <button class="btn btn-primary" (click)="addTaxResidency()">+ Create another tax residency</button>
     </div>
 

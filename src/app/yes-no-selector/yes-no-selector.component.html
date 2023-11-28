@@ -1,1 +1,8 @@
-<p>yes-no-selector works!</p>
+<label>{{ label }}</label>
+<select class="form-control" [formControl]="control" (change)="onSelectionChange($event.target.value)">
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+</select>
+<small [style.color]="'red'" *ngIf="control.hasError('required')">
+    * Please select.
+</small><br><br>

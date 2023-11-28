@@ -25,7 +25,6 @@ export class FatcaStatusComponent implements OnInit {
       taxResidencies: this.fb.array([]),
     });
     this.dss.patchStoredData(this.fatcaStatusForm, 'fatcaStatusData');
-    console.log(this.fatcaStatusForm);
     this.parentForm.addControl('fatcaStatusForm', this.fatcaStatusForm);
   }
 
@@ -55,8 +54,8 @@ export class FatcaStatusComponent implements OnInit {
     }
   }
 
-  showAttention(value: string) {
-    if (value === 'Yes') {
+  showAttention(selectedValue: string) {
+    if (selectedValue === 'Yes') {
       Swal.fire({
         title: 'Attention',
         text: 'Please note that due to restrictions and tax reporting requirements to U.S. persons, we are sorry to inform that we are unable to open accounts for an individual with U.S. citizenship/ U.S. Permanent Resident Status/ U.S. Taxpayer Identification Number (TIN) and/ or U.S. Residential/ Mailing Address. For further clarification, please contact us.',

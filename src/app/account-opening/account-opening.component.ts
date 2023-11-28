@@ -23,6 +23,8 @@ export class AccountOpeningComponent {
   ngOnInit(): void {
     this.parentForm = this.fb.group({});
     this.cdr.detectChanges();
+    console.log(this.parentForm);
+    
   }
 
   onSubmit(f: NgForm) {
