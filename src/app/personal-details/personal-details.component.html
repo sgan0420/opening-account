@@ -1,9 +1,10 @@
 <div [formGroup]="personalDetailsForm">
-    <h2>To get started, tell us about yourself.</h2>
-    <h4><u>Contact Information</u></h4>
-    <label for="mobnum">Mobile Number</label>
-    <input placeholder="Mobile Number" type="text" id="mobnum" class="form-control" formControlName="mobnum">
-    <mat-error *ngIf="personalDetailsForm.get('mobnum').hasError('required')">
+
+    <h3>Contact Information</h3>
+    <label for="mobile">Mobile Number</label>
+    <input placeholder="Mobile Number" type="text" id="mobile" class="form-control" formControlName="mobile">
+    <mat-error *ngIf="personalDetailsForm.get('mobile').hasError('required')">
         *required field
     </mat-error>
+
 </div>

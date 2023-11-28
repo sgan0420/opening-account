@@ -15,7 +15,7 @@ export class PersonalDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.personalDetailsForm = this.fb.group({
-      mobnum: ['', Validators.required],
+      mobile: ['', Validators.required],
     });
 
     this.parentForm.addControl('personalDetailsForm', this.personalDetailsForm);

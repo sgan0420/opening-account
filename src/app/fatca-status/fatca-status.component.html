@@ -21,7 +21,6 @@
     <hr>
     <h3>Tax Residency</h3>
 
-
     <app-yes-no-selector label="Are you a tax resident in any jurisdiction(s)?" [control]="fatcaStatusForm.get('tax')"
         (selectionChange)="deleteAllTaxResidencies($event)">
     </app-yes-no-selector>
@@ -45,7 +44,7 @@
                     <mat-label>Tax Identification Number</mat-label>
                     <input matInput placeholder="Tax Identification Number" type="text" formControlName="tin">
                     <mat-error *ngIf="taxResidency.get('tin').hasError('required')">
-                        * Please fill.
+                        *Please fill.
                     </mat-error>
                 </mat-form-field>
             </div>
