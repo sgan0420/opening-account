@@ -19,10 +19,10 @@ export class FatcaStatusComponent implements OnInit {
 
   ngOnInit(): void {
     this.fatcaStatusForm = this.fb.group({
-      citizenship: ['', [Validators.required, this.allowedValidator(['No'])]],
-      birth: ['', [Validators.required, this.allowedValidator(['No'])]],
-      address: ['', [Validators.required, this.allowedValidator(['No'])]],
-      telephone: ['', [Validators.required, this.allowedValidator(['No'])]],
+      citizenship: ['', [Validators.required, this.usValidator(['No'])]],
+      birth: ['', [Validators.required, this.usValidator(['No'])]],
+      address: ['', [Validators.required, this.usValidator(['No'])]],
+      telephone: ['', [Validators.required, this.usValidator(['No'])]],
       tax: ['', Validators.required],
       taxResidencies: this.fb.array([]),
     });
@@ -38,7 +38,7 @@ export class FatcaStatusComponent implements OnInit {
     this.parentForm.addControl('fatcaStatusForm', this.fatcaStatusForm);
   }
 
-  allowedValidator(allowedValues: string[]) {
+  usValidator(allowedValues: string[]) {
     return (control: AbstractControl): ValidationErrors | null => {
       if (allowedValues.includes(control.value)) {
         return null;
@@ -54,7 +54,7 @@ export class FatcaStatusComponent implements OnInit {
 
   addTaxResidency(newJurisdiction: string, newTin: string) {
     const taxResidency = this.fb.group({
-      jurisdiction: [newJurisdiction, [Validators.required, this.allowedValidator(this.cds.getCountries())]],
+      jurisdiction: [newJurisdiction, [Validators.required, this.usValidator(this.cds.getCountries())]],
       tin: [newTin, Validators.required]
     });
     this.taxResidencies.push(taxResidency);

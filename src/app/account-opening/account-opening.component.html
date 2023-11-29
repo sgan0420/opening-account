@@ -3,7 +3,7 @@
 
 <hr>
 
-<form [formGroup]="parentForm" (ngSubmit)="onSubmit(f)" #f="ngForm">
+<form [formGroup]="parentForm" (ngSubmit)="onSubmit(f)" #f="ngForm" (keydown.enter)="$event.preventDefault()">
 
   <mat-vertical-stepper linear>
 

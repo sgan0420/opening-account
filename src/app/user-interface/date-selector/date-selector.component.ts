@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MatDatepicker } from '@angular/material/datepicker';
+import { MatDatepicker, MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-date-selector',
@@ -11,5 +11,5 @@ export class DateSelectorComponent {
 
   @Input() label: string;
   @Input() control: FormControl = new FormControl();
-  
+
 }
