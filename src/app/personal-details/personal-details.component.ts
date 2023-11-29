@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { DataStorageService } from '../utilities/data-storage.service';
 import Swal from 'sweetalert2';
+import { CountryDataService } from '../utilities/country-data.service';
 
 @Component({
   selector: 'app-personal-details',
@@ -13,7 +14,7 @@ export class PersonalDetailsComponent implements OnInit {
   @Input() parentForm: FormGroup;
   personalDetailsForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private dss: DataStorageService) { }
+  constructor(private fb: FormBuilder, private dss: DataStorageService, private cds: CountryDataService) { }
 
   ngOnInit(): void {
     this.personalDetailsForm = this.fb.group({
@@ -26,7 +27,7 @@ export class PersonalDetailsComponent implements OnInit {
       residential: ['', Validators.required],
       state: ['', Validators.required],
       postal: ['', Validators.required],
-      country: ['', Validators.required],
+      country: ['', [Validators.required, this.cds.allowedValidator(this.cds.getCountries())]],
       status: ['', Validators.required],
     });
     this.dss.patchStoredData(this.personalDetailsForm, 'personalDetailsData');

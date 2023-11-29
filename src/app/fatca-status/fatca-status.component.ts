@@ -43,7 +43,7 @@ export class FatcaStatusComponent implements OnInit {
       if (allowedValues.includes(control.value)) {
         return null;
       } else {
-        return { isUS: true };
+        return { invalidValue: true };
       }
     };
   }
@@ -54,7 +54,7 @@ export class FatcaStatusComponent implements OnInit {
 
   addTaxResidency(newJurisdiction: string, newTin: string) {
     const taxResidency = this.fb.group({
-      jurisdiction: [newJurisdiction, [Validators.required, this.usValidator(this.cds.getCountries())]],
+      jurisdiction: [newJurisdiction, [Validators.required, this.cds.allowedValidator(this.cds.getCountries())]],
       tin: [newTin, Validators.required]
     });
     this.taxResidencies.push(taxResidency);

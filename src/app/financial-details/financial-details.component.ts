@@ -16,10 +16,9 @@ export class FinancialDetailsComponent {
 
   ngOnInit(): void {
     this.financialDetailsForm = this.fb.group({
-      
+
     });
     this.dss.patchStoredData(this.financialDetailsForm, 'financialDetailsData')
     this.parentForm.addControl('financialDetailsForm', this.financialDetailsForm);
-
   }
 }

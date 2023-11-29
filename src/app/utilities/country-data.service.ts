@@ -1,5 +1,6 @@
 // country.service.ts
 import { Injectable } from '@angular/core';
+import { AbstractControl, ValidationErrors } from '@angular/forms';
 
 @Injectable()
 export class CountryDataService {
@@ -206,5 +207,15 @@ export class CountryDataService {
     getCountries() {
         return this.countries.slice();
     }
+
+    allowedValidator(allowedValues: string[]) {
+        return (control: AbstractControl): ValidationErrors | null => {
+          if (allowedValues.includes(control.value)) {
+            return null;
+          } else {
+            return { invalidValue: true };
+          }
+        };
+      }
 
 }

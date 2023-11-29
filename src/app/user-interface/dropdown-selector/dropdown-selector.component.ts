@@ -9,7 +9,7 @@ import { FormControl } from '@angular/forms';
 export class DropdownSelectorComponent {
 
   @Input() label: string;
-  @Input() control: FormControl;
+  @Input() control: FormControl = new FormControl;
   @Input() options: string[] = [];
 
 }
