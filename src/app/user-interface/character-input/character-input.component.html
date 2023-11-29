@@ -2,6 +2,6 @@
     <mat-label>{{ label }}</mat-label>
     <input appCharacterOnly matInput [placeholder]="label" type="text" [formControl]="control">
     <mat-error *ngIf="control.hasError('required')">
-        *Please fill.
+        *Please fill (characters only).
     </mat-error>
 </mat-form-field>
