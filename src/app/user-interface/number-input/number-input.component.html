@@ -1,0 +1,7 @@
+<mat-form-field style="width: 49.5%;">
+    <mat-label>{{ label }}</mat-label>
+    <input appNumberOnly matInput [placeholder]="label" type="text" [formControl]="control">
+    <mat-error *ngIf="control.hasError('required')">
+        *Please fill (numbers only).
+    </mat-error>
+</mat-form-field>

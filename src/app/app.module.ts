@@ -26,6 +26,10 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatIconModule } from '@angular/material/icon';
 import { AlphabetOnlyDirective } from './utilities/alphabet-only.directive';
 import { CountryDataService } from './utilities/country-data.service';
+import { NumberInputComponent } from './user-interface/number-input/number-input.component';
+import { CharacterInputComponent } from './user-interface/character-input/character-input.component';
+import { NumberOnlyDirective } from './utilities/number-only.directive';
+import { CharacterOnlyDirective } from './utilities/character-only.directive';
 
 @NgModule({
   declarations: [
@@ -40,6 +44,10 @@ import { CountryDataService } from './utilities/country-data.service';
     YesNoSelectorComponent,
     CountrySelectorComponent,
     AlphabetOnlyDirective,
+    NumberInputComponent,
+    CharacterInputComponent,
+    NumberOnlyDirective,
+    CharacterOnlyDirective,
   ],
   imports: [
     BrowserModule,
