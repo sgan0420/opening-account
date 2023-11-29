@@ -32,7 +32,8 @@
     </app-dropdown-selector>
 
     <app-character-input *ngIf="financialDetailsForm.get('business').value === 'Others (Please specify)'"
-        label="Nature of Business (Others)" [control]="financialDetailsForm.get('otherbusiness')" style="margin-left: 1%;">
+        label="Nature of Business (Others)" [control]="financialDetailsForm.get('otherbusiness')"
+        style="margin-left: 1%;">
     </app-character-input>
 
     <h3>Financial Information</h3>
@@ -58,6 +59,24 @@
     ]" style="margin-left: 1%;">
     </app-dropdown-selector>
 
-    
+    <div style="display: flex; flex-direction: column; width: 49%; margin-left: 51%;" *ngIf="isOtherIncome()">
+        <p>Where does your other income(s) come from? Please tick all that apply.</p>
+        <mat-checkbox formControlName="check1">
+            <label style="margin-top: 10px;">Rental Income</label>
+        </mat-checkbox>
+        <mat-checkbox formControlName="check2">
+            <label style="margin-top: 10px;">Dividens</label>
+        </mat-checkbox>
+        <mat-checkbox formControlName="check3">
+            <label style="margin-top: 10px;">Investment Income</label>
+        </mat-checkbox>
+        <mat-checkbox formControlName="check4">
+            <label style="margin-top: 10px;">Others</label>
+        </mat-checkbox>
+        <mat-error *ngIf="financialDetailsForm.hasError('requiredCheckbox')">
+            *Please tick at least one.
+        </mat-error>
+
+    </div>
 
 </div>

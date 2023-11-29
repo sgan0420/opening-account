@@ -15,7 +15,7 @@ export class AccountOpeningComponent {
     { label: 'Fatca Status', form: 'fatcaStatusForm' },
     { label: 'Personal Details', form: 'personalDetailsForm' },
     { label: 'Financial Details', form: 'financialDetailsForm' },
-    { label: 'Reasons To Open', form: 'reasonToOpenForm' },
+    // { label: 'Reasons To Open', form: 'reasonToOpenForm' },
   ];
 
   constructor(private fb: FormBuilder, private cdr: ChangeDetectorRef, private dss: DataStorageService) { }

@@ -29,7 +29,7 @@
     </ng-container>
 
     <mat-step [completed]="isStepCompleted(parentForm)">
-      <ng-template matStepLabel>Step 5: Submit</ng-template>
+      <ng-template matStepLabel>Step {{ steps.length + 1 }}: Submit</ng-template>
       <hr>
       <div>
         <button mat-raised-button matStepperPrevious>Back</button>

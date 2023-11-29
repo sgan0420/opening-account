@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, AbstractControlOptions, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { DataStorageService } from '../utilities/data-storage.service';
 
 @Component({
@@ -22,8 +22,21 @@ export class FinancialDetailsComponent {
       otherbusiness: [''],
       salary: ['', Validators.required],
       otherincome: ['', Validators.required],
+      check1: [''],
+      check2: [''],
+      check3: [''],
+      check4: [''],
     });
 
+    this.setOtherBusinessValidation();
+    this.setCheckBoxValidation();
+
+
+    this.dss.patchStoredData(this.financialDetailsForm, 'financialDetailsData')
+    this.parentForm.addControl('financialDetailsForm', this.financialDetailsForm);
+  }
+
+  setOtherBusinessValidation() {
     const businessControl = this.financialDetailsForm.get('business');
     const otherBusinessControl = this.financialDetailsForm.get('otherbusiness');
     businessControl.valueChanges.subscribe((value) => {
@@ -34,9 +47,28 @@ export class FinancialDetailsComponent {
       }
       otherBusinessControl.updateValueAndValidity();
     });
+  }
 
-    this.dss.patchStoredData(this.financialDetailsForm, 'financialDetailsData')
-    this.parentForm.addControl('financialDetailsForm', this.financialDetailsForm);
+  setCheckBoxValidation() {
+    const atLeastOneCheckboxSelected = (group: AbstractControl): { [key: string]: any } | null => {
+      const isAtLeastOneSelected =
+        ['check1', 'check2', 'check3', 'check4'].some(controlName => group.get(controlName)?.value);
+      return isAtLeastOneSelected ? null : { requiredCheckbox: true };
+    };
+
+    const otherIncomeControl = this.financialDetailsForm.get('otherincome');
+    otherIncomeControl.valueChanges.subscribe((value) => {
+      if (value && value !== 'None') {
+        this.financialDetailsForm.setValidators([atLeastOneCheckboxSelected])
+      } else {
+        this.financialDetailsForm.clearValidators();
+      }
+      this.financialDetailsForm.updateValueAndValidity();
+    })
+  }
+
+  isOtherIncome() {
+    return this.financialDetailsForm.get('otherincome').value !== 'None' && this.financialDetailsForm.get('otherincome').value
   }
 
 }
