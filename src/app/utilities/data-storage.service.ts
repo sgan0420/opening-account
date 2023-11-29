@@ -16,10 +16,10 @@ export class DataStorageService {
       'financialDetailsData',
       JSON.stringify(parentForm.get('financialDetailsForm').value)
     );
-    sessionStorage.setItem(
-      'reasonToOpenData',
-      JSON.stringify(parentForm.get('reasonToOpenForm').value)
-    );
+    // sessionStorage.setItem(
+    //   'reasonToOpenData',
+    //   JSON.stringify(parentForm.get('reasonToOpenForm').value)
+    // );
     sessionStorage.setItem(
       'taxResidenciesData',
       JSON.stringify(
