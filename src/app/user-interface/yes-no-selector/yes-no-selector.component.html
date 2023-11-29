@@ -1,13 +1,16 @@
 <mat-form-field appearance="fill" style="width: 100%">
-    <mat-label>{{ label }}</mat-label>
-    <mat-select [formControl]="control" (selectionChange)="onSelectionChange($event.value)">
-        <mat-option value="Yes">Yes</mat-option>
-        <mat-option value="No">No</mat-option>
-    </mat-select>
-    <mat-error *ngIf="control.hasError('required')">
-        *Please select yes or no.
-    </mat-error>
-    <mat-error *ngIf="control.hasError('isUS')">
-        *Please note that U.S. indicia holders are not able to open an account.
-    </mat-error>
+  <mat-label>{{ label }}</mat-label>
+  <mat-select
+    [formControl]="control"
+    (selectionChange)="onSelectionChange($event.value)"
+  >
+    <mat-option value="Yes">Yes</mat-option>
+    <mat-option value="No">No</mat-option>
+  </mat-select>
+  <mat-error *ngIf="control.hasError('required')">
+    *Please select yes or no.
+  </mat-error>
+  <mat-error *ngIf="control.hasError('isUS')">
+    *Please note that U.S. indicia holders are not able to open an account.
+  </mat-error>
 </mat-form-field>

@@ -1,52 +1,81 @@
 <div [formGroup]="fatcaStatusForm">
+  <h3>Do you possess any of the following U.S. indicia?</h3>
 
-    <h3>Do you possess any of the following U.S. indicia?</h3>
+  <app-yes-no-selector
+    label="US citizenship/tax residency (e.g. US passport/Green Card holder, U.S. taxpayer, etc.)"
+    [control]="fatcaStatusForm.get('citizenship')"
+    (selectionChange)="showAttention($event)"
+  >
+  </app-yes-no-selector>
 
-    <app-yes-no-selector label="US citizenship/tax residency (e.g. US passport/Green Card holder, U.S. taxpayer, etc.)"
-        [control]="fatcaStatusForm.get('citizenship')" (selectionChange)="showAttention($event)">
-    </app-yes-no-selector>
+  <app-yes-no-selector
+    label="US place of birth"
+    [control]="fatcaStatusForm.get('birth')"
+    (selectionChange)="showAttention($event)"
+  >
+  </app-yes-no-selector>
 
-    <app-yes-no-selector label="US place of birth" [control]="fatcaStatusForm.get('birth')"
-        (selectionChange)="showAttention($event)">
-    </app-yes-no-selector>
+  <app-yes-no-selector
+    label="US address (e.g. residential address, mailing address, P.O. box)"
+    [control]="fatcaStatusForm.get('address')"
+    (selectionChange)="showAttention($event)"
+  >
+  </app-yes-no-selector>
 
-    <app-yes-no-selector label="US address (e.g. residential address, mailing address, P.O. box)"
-        [control]="fatcaStatusForm.get('address')" (selectionChange)="showAttention($event)">
-    </app-yes-no-selector>
+  <app-yes-no-selector
+    label="US telephone number"
+    [control]="fatcaStatusForm.get('telephone')"
+    (selectionChange)="showAttention($event)"
+  >
+  </app-yes-no-selector>
 
-    <app-yes-no-selector label="US telephone number" [control]="fatcaStatusForm.get('telephone')"
-        (selectionChange)="showAttention($event)">
-    </app-yes-no-selector>
+  <hr />
+  <h3>Tax Residency</h3>
 
-    <hr>
-    <h3>Tax Residency</h3>
+  <app-yes-no-selector
+    label="Are you a tax resident in any jurisdiction(s)?"
+    [control]="fatcaStatusForm.get('tax')"
+    (selectionChange)="deleteAllTaxResidencies($event)"
+  >
+  </app-yes-no-selector>
 
-    <app-yes-no-selector label="Are you a tax resident in any jurisdiction(s)?" [control]="fatcaStatusForm.get('tax')"
-        (selectionChange)="deleteAllTaxResidencies($event)">
-    </app-yes-no-selector>
+  <div
+    formArrayName="taxResidencies"
+    *ngIf="fatcaStatusForm.get('tax').value === 'Yes'"
+  >
+    <div
+      *ngFor="let taxResidency of taxResidencies.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <div class="individual-tax">
+        <h3 display="flex">
+          Tax Residency #{{ i + 1 }}
+          <button
+            mat-mini-fab
+            color="warn"
+            (click)="deleteTaxResidency(i)"
+            *ngIf="i >= 1"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </h3>
 
-    <div formArrayName="taxResidencies" *ngIf="fatcaStatusForm.get('tax').value === 'Yes'">
-        <div *ngFor="let taxResidency of taxResidencies.controls; let i = index" [formGroupName]="i">
-            <div class="individual-tax">
-                <h3 display="flex">
-                    Tax Residency #{{ i + 1 }}
-                    <button mat-mini-fab color="warn" (click)="deleteTaxResidency(i)" *ngIf="i >= 1">
-                        <mat-icon>delete</mat-icon>
-                    </button>
-                </h3>
+        <app-country-selector
+          label="Jurisdiction of Residence for Tax Purposes"
+          [control]="taxResidency.get('jurisdiction')"
+        >
+        </app-country-selector>
 
-                <app-country-selector label="Jurisdiction of Residence for Tax Purposes"
-                    [control]="taxResidency.get('jurisdiction')">
-                </app-country-selector>
-
-                <app-text-input label="Tax Identification Number" [control]="taxResidency.get('tin')"
-                    style="margin-left: 1%;">
-                </app-text-input>
-            </div>
-        </div>
-        <button mat-stroked-button (click)="addTaxResidency('', '')">
-            + Create another tax residency
-        </button>
+        <app-text-input
+          label="Tax Identification Number"
+          [control]="taxResidency.get('tin')"
+          style="margin-left: 1%"
+        >
+        </app-text-input>
+      </div>
     </div>
-
+    <button mat-stroked-button (click)="addTaxResidency('', '')">
+      + Create another tax residency
+    </button>
+  </div>
 </div>

@@ -1,10 +1,10 @@
 import { Directive, ElementRef, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[appAlphabetOnly]'
+  selector: '[appAlphabetOnly]',
 })
 export class AlphabetOnlyDirective {
-  constructor(private el: ElementRef) { }
+  constructor(private el: ElementRef) {}
 
   @HostListener('input', ['$event'])
   onInput(event: Event) {

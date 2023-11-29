@@ -6,10 +6,9 @@ import { DataStorageService } from '../utilities/data-storage.service';
 @Component({
   selector: 'app-account-opening',
   templateUrl: './account-opening.component.html',
-  styleUrl: './account-opening.component.css'
+  styleUrl: './account-opening.component.css',
 })
 export class AccountOpeningComponent {
-
   parentForm: FormGroup;
   steps = [
     { label: 'Fatca Status', form: 'fatcaStatusForm' },
@@ -18,7 +17,11 @@ export class AccountOpeningComponent {
     // { label: 'Reasons To Open', form: 'reasonToOpenForm' },
   ];
 
-  constructor(private fb: FormBuilder, private cdr: ChangeDetectorRef, private dss: DataStorageService) { }
+  constructor(
+    private fb: FormBuilder,
+    private cdr: ChangeDetectorRef,
+    private dss: DataStorageService
+  ) {}
 
   ngOnInit(): void {
     this.parentForm = this.fb.group({});
@@ -37,5 +40,4 @@ export class AccountOpeningComponent {
   isStepCompleted(form) {
     return form ? form.valid : false;
   }
-
 }

@@ -1,21 +1,30 @@
-import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import {
+  AbstractControl,
+  FormArray,
+  FormBuilder,
+  FormGroup,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 import Swal from 'sweetalert2';
 import { DataStorageService } from '../utilities/data-storage.service';
-import { CountrySelectorComponent } from '../user-interface/country-selector/country-selector.component';
 import { CountryDataService } from '../utilities/country-data.service';
 
 @Component({
   selector: 'app-fatca-status',
   templateUrl: './fatca-status.component.html',
-  styleUrl: './fatca-status.component.css'
+  styleUrl: './fatca-status.component.css',
 })
 export class FatcaStatusComponent implements OnInit {
-
   @Input() parentForm: FormGroup;
   fatcaStatusForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private dss: DataStorageService, private cds: CountryDataService) { }
+  constructor(
+    private fb: FormBuilder,
+    private dss: DataStorageService,
+    private cds: CountryDataService
+  ) {}
 
   ngOnInit(): void {
     this.fatcaStatusForm = this.fb.group({
@@ -27,13 +36,13 @@ export class FatcaStatusComponent implements OnInit {
       taxResidencies: this.fb.array([]),
     });
     this.dss.patchStoredData(this.fatcaStatusForm, 'fatcaStatusData');
-    const storedTaxResidencies = JSON.parse(sessionStorage.getItem('taxResidenciesData')) as Array<{ jurisdiction: string, tin: string }>;
+    const storedTaxResidencies = JSON.parse(
+      sessionStorage.getItem('taxResidenciesData')
+    ) as Array<{ jurisdiction: string; tin: string }>;
     if (storedTaxResidencies) {
-      storedTaxResidencies.forEach(
-        taxResidency => {
-          this.addTaxResidency(taxResidency.jurisdiction, taxResidency.tin);
-        }
-      );
+      storedTaxResidencies.forEach((taxResidency) => {
+        this.addTaxResidency(taxResidency.jurisdiction, taxResidency.tin);
+      });
     }
     this.parentForm.addControl('fatcaStatusForm', this.fatcaStatusForm);
   }
@@ -54,8 +63,14 @@ export class FatcaStatusComponent implements OnInit {
 
   addTaxResidency(newJurisdiction: string, newTin: string) {
     const taxResidency = this.fb.group({
-      jurisdiction: [newJurisdiction, [Validators.required, this.cds.allowedValidator(this.cds.getCountries())]],
-      tin: [newTin, Validators.required]
+      jurisdiction: [
+        newJurisdiction,
+        [
+          Validators.required,
+          this.cds.allowedValidator(this.cds.getCountries()),
+        ],
+      ],
+      tin: [newTin, Validators.required],
     });
     this.taxResidencies.push(taxResidency);
   }
@@ -82,5 +97,4 @@ export class FatcaStatusComponent implements OnInit {
       });
     }
   }
-
 }

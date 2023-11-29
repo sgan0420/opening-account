@@ -78,10 +78,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatNativeDateModule,
     MatCheckboxModule,
   ],
-  providers: [
-    DataStorageService,
-    CountryDataService
-  ],
-  bootstrap: [AppComponent]
+  providers: [DataStorageService, CountryDataService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

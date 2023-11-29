@@ -1,7 +1,5 @@
-<mat-form-field style="width: 49.5%;">
-    <mat-label>{{ label }}</mat-label>
-    <input matInput [placeholder]="label" type="text" [formControl]="control">
-    <mat-error *ngIf="control.hasError('required')">
-        *Please fill.
-    </mat-error>
+<mat-form-field style="width: 49.5%">
+  <mat-label>{{ label }}</mat-label>
+  <input matInput [placeholder]="label" type="text" [formControl]="control" />
+  <mat-error *ngIf="control.hasError('required')"> *Please fill. </mat-error>
 </mat-form-field>

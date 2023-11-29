@@ -1,15 +1,28 @@
 <mat-form-field style="width: 49.5%">
-    <mat-label>{{ label }}</mat-label>
-    <input matInput appAlphabetOnly placeholder="Select a country" [formControl]="control" [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let country of filteredCountries | async" [value]="country">
-            {{ country }}
-        </mat-option>
-    </mat-autocomplete>
-    <mat-error *ngIf="control.hasError('required') && !control.hasError('invalidValue')">
-        *Please select a country.
-    </mat-error>
-    <mat-error *ngIf="control.hasError('invalidValue') && !control.hasError('required')">
-        *Please enter a valid country.
-    </mat-error>
+  <mat-label>{{ label }}</mat-label>
+  <input
+    matInput
+    appAlphabetOnly
+    placeholder="Select a country"
+    [formControl]="control"
+    [matAutocomplete]="auto"
+  />
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option
+      *ngFor="let country of filteredCountries | async"
+      [value]="country"
+    >
+      {{ country }}
+    </mat-option>
+  </mat-autocomplete>
+  <mat-error
+    *ngIf="control.hasError('required') && !control.hasError('invalidValue')"
+  >
+    *Please select a country.
+  </mat-error>
+  <mat-error
+    *ngIf="control.hasError('invalidValue') && !control.hasError('required')"
+  >
+    *Please enter a valid country.
+  </mat-error>
 </mat-form-field>
