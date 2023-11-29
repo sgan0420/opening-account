@@ -35,6 +35,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { DropdownSelectorComponent } from './user-interface/dropdown-selector/dropdown-selector.component';
 import { TextInputComponent } from './user-interface/text-input/text-input.component';
 import { DateSelectorComponent } from './user-interface/date-selector/date-selector.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { DateSelectorComponent } from './user-interface/date-selector/date-selec
     MatIconModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatCheckboxModule,
   ],
   providers: [
     DataStorageService,

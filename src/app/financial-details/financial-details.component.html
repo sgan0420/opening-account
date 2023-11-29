@@ -1,1 +1,63 @@
+<div [formGroup]="financialDetailsForm">
 
+    <h3>Occupation Information</h3>
+
+    <app-dropdown-selector label="Employment Status" [control]="financialDetailsForm.get('employment')" [options]="[
+        'Full-time employment', 
+        'Part-time employment', 
+        'Self-employment',
+        'Student and retired',
+        'Unemployed',
+        'None'
+    ]">
+    </app-dropdown-selector>
+
+    <app-character-input label="Name of Employer" [control]="financialDetailsForm.get('employer')"
+        style="margin-left: 1%;">
+    </app-character-input>
+
+    <app-dropdown-selector label="Nature of Business" [control]="financialDetailsForm.get('business')" [options]="[
+        'Agriculture', 
+        'Banking',
+        'Financial Services', 
+        'Government Body',
+        'Individual',
+        'Information Technology',
+        'Leisure',
+        'Manufacturing',
+        'Retail',
+        'Services',
+        'Others (Please specify)',
+    ]">
+    </app-dropdown-selector>
+
+    <app-character-input *ngIf="financialDetailsForm.get('business').value === 'Others (Please specify)'"
+        label="Nature of Business (Others)" [control]="financialDetailsForm.get('otherbusiness')" style="margin-left: 1%;">
+    </app-character-input>
+
+    <h3>Financial Information</h3>
+
+    <app-dropdown-selector label="Your annual salary in GBP" [control]="financialDetailsForm.get('salary')" [options]="[
+        'below GBP 10,000',
+        'GBP 10,000 - GBP 30,000',
+        'GBP 30,001 - GBP 60,000',
+        'GBP 60,001 - GBP 100,000',
+        'GBP 100,001 - GBP 300,000',
+        'above GBP 300,000',
+    ]">
+    </app-dropdown-selector>
+
+    <app-dropdown-selector label="Other income in GBP" [control]="financialDetailsForm.get('otherincome')" [options]="[
+        'None',
+        'below GBP 10,000',
+        'GBP 10,000 - GBP 30,000',
+        'GBP 30,001 - GBP 60,000',
+        'GBP 60,001 - GBP 100,000',
+        'GBP 100,001 - GBP 300,000',
+        'above GBP 300,000',
+    ]" style="margin-left: 1%;">
+    </app-dropdown-selector>
+
+    
+
+</div>
