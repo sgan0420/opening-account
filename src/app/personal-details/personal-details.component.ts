@@ -20,6 +20,8 @@ export class PersonalDetailsComponent implements OnInit {
       lastname: ['', Validators.required],
       firstname: ['', Validators.required],
       middlename: [''],
+      gender: ['', Validators.required],
+      birthdate: ['', Validators.required],
     });
     this.dss.patchStoredData(this.personalDetailsForm, 'personalDetailsData');
     this.parentForm.addControl('personalDetailsForm', this.personalDetailsForm);

@@ -30,6 +30,11 @@ import { NumberInputComponent } from './user-interface/number-input/number-input
 import { CharacterInputComponent } from './user-interface/character-input/character-input.component';
 import { NumberOnlyDirective } from './utilities/number-only.directive';
 import { CharacterOnlyDirective } from './utilities/character-only.directive';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { DropdownSelectorComponent } from './user-interface/dropdown-selector/dropdown-selector.component';
+import { TextInputComponent } from './user-interface/text-input/text-input.component';
+import { DateSelectorComponent } from './user-interface/date-selector/date-selector.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +53,9 @@ import { CharacterOnlyDirective } from './utilities/character-only.directive';
     CharacterInputComponent,
     NumberOnlyDirective,
     CharacterOnlyDirective,
+    DropdownSelectorComponent,
+    TextInputComponent,
+    DateSelectorComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +73,8 @@ import { CharacterOnlyDirective } from './utilities/character-only.directive';
     MatInputModule,
     MatSelectModule,
     MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [
     DataStorageService,

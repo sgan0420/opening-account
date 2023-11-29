@@ -30,8 +30,7 @@
             <div class="individual-tax">
                 <h3 display="flex">
                     Tax Residency #{{ i + 1 }}
-                    <button mat-mini-fab color="warn" (click)="deleteTaxResidency(i)" *ngIf="i >= 1"
-                        style="margin-left: 10px;">
+                    <button mat-mini-fab color="warn" (click)="deleteTaxResidency(i)" *ngIf="i >= 1">
                         <mat-icon>delete</mat-icon>
                     </button>
                 </h3>
@@ -40,16 +39,14 @@
                     [control]="taxResidency.get('jurisdiction')">
                 </app-country-selector>
 
-                <mat-form-field style="width: 100%;">
-                    <mat-label>Tax Identification Number</mat-label>
-                    <input matInput placeholder="Tax Identification Number" type="text" formControlName="tin">
-                    <mat-error *ngIf="taxResidency.get('tin').hasError('required')">
-                        *Please fill.
-                    </mat-error>
-                </mat-form-field>
+                <app-text-input label="Tax Identification Number" [control]="taxResidency.get('tin')"
+                    style="margin-left: 1%;">
+                </app-text-input>
             </div>
         </div>
-        <button mat-stroked-button (click)="addTaxResidency('', '')">+ Create another tax residency</button>
+        <button mat-stroked-button (click)="addTaxResidency('', '')">
+            + Create another tax residency
+        </button>
     </div>
 
 </div>
