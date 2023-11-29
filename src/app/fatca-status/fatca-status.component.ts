@@ -43,7 +43,7 @@ export class FatcaStatusComponent implements OnInit {
       if (allowedValues.includes(control.value)) {
         return null;
       } else {
-        return { invalidValue: true };
+        return { isUS: true };
       }
     };
   }

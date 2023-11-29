@@ -10,8 +10,28 @@
         </div>
     </mat-form-field>
 
-
     <h3>Personal Information</h3>
-    
+
+    <mat-form-field appearance="fill" style="width: 49.5%">
+        <mat-label>Title</mat-label>
+        <mat-select formControlName="title">
+            <mat-option value="Mr.">Mr.</mat-option>
+            <mat-option value="Mrs.">Mrs.</mat-option>
+            <mat-option value="Ms.">Ms.</mat-option>
+            <mat-option value="Dr.">Dr.</mat-option>
+            <mat-option value="Sir.">Sir.</mat-option>
+            <mat-option value="Mdm.">Mdm.</mat-option>
+            <mat-option value="Prof.">Prof.</mat-option>
+        </mat-select>
+        <mat-error *ngIf="personalDetailsForm.get('title').hasError('required')">
+            *Please select your title.
+        </mat-error>
+    </mat-form-field>
+
+    <app-character-input label="Last Name (Surname)" [control]="personalDetailsForm.get('lastname')" style="margin-left: 1%;"></app-character-input>
+
+    <app-character-input label="First Name (Given Name)" [control]="personalDetailsForm.get('firstname')"></app-character-input>
+
+    <app-character-input label="Middle Name (Optional)" [control]="personalDetailsForm.get('middlename')" hint="This is optional." style="margin-left: 1%;"></app-character-input>
 
 </div>

@@ -10,5 +10,6 @@ export class CharacterInputComponent {
 
   @Input() label: string;
   @Input() control: FormControl = new FormControl();
+  @Input() hint: string;
   
 }
