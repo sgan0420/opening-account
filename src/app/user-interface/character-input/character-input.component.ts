@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { AbstractControl, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-character-input',
@@ -8,6 +8,10 @@ import { FormControl } from '@angular/forms';
 })
 export class CharacterInputComponent {
   @Input() label: string;
-  @Input() control: FormControl = new FormControl();
+  @Input() control: AbstractControl;
   @Input() hint: string;
+
+  getControl() {
+    return this.control as FormControl;
+  }
 }

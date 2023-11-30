@@ -9,8 +9,7 @@ export class CharacterOnlyDirective {
   @HostListener('input', ['$event'])
   onInput(event: Event) {
     const inputElement = this.el.nativeElement as HTMLInputElement;
-    const newValue = inputElement.value.replace(/[0-9]/g, '');
-    inputElement.value = newValue;
-    // event.preventDefault();
+    inputElement.value = inputElement.value.replace(/[0-9]/g, '');
+    event.preventDefault();
   }
 }

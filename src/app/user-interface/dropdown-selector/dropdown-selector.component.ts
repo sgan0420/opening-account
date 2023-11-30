@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { AbstractControl, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-dropdown-selector',
@@ -8,6 +8,10 @@ import { FormControl } from '@angular/forms';
 })
 export class DropdownSelectorComponent {
   @Input() label: string;
-  @Input() control: FormControl = new FormControl();
+  @Input() control: AbstractControl;
   @Input() options: string[] = [];
+
+  getControl() {
+    return this.control as FormControl;
+  }
 }

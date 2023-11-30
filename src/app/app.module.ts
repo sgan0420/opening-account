@@ -6,12 +6,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { AppComponent } from './app.component';
-import { FatcaStatusComponent } from './fatca-status/fatca-status.component';
-import { PersonalDetailsComponent } from './personal-details/personal-details.component';
-import { FinancialDetailsComponent } from './financial-details/financial-details.component';
-import { ReasonToOpenComponent } from './reason-to-open/reason-to-open.component';
+import { FatcaStatusComponent } from './form/fatca-status/fatca-status.component';
+import { PersonalDetailsComponent } from './form/personal-details/personal-details.component';
+import { FinancialDetailsComponent } from './form/financial-details/financial-details.component';
+import { ReasonToOpenComponent } from './form/reason-to-open/reason-to-open.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AccountOpeningComponent } from './account-opening/account-opening.component';
+import { AccountOpeningComponent } from './form/account-opening/account-opening.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
@@ -36,6 +36,7 @@ import { DropdownSelectorComponent } from './user-interface/dropdown-selector/dr
 import { TextInputComponent } from './user-interface/text-input/text-input.component';
 import { DateSelectorComponent } from './user-interface/date-selector/date-selector.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { NgOptimizedImage } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
+    NgOptimizedImage,
   ],
   providers: [DataStorageService, CountryDataService],
   bootstrap: [AppComponent],

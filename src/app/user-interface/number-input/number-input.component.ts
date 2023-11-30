@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { AbstractControl, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-number-input',
@@ -8,5 +8,9 @@ import { FormControl } from '@angular/forms';
 })
 export class NumberInputComponent {
   @Input() label: string;
-  @Input() control: FormControl = new FormControl();
+  @Input() control: AbstractControl;
+
+  getControl() {
+    return this.control as FormControl;
+  }
 }

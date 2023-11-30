@@ -5,9 +5,9 @@
     matInput
     [placeholder]="label"
     type="text"
-    [formControl]="control"
+    [formControl]="getControl()"
   />
-  <mat-error *ngIf="control.hasError('required')">
+  <mat-error *ngIf="getControl().hasError('required')">
     *Please fill (numbers only).
   </mat-error>
 </mat-form-field>

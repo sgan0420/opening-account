@@ -9,8 +9,7 @@ export class AlphabetOnlyDirective {
   @HostListener('input', ['$event'])
   onInput(event: Event) {
     const inputElement = this.el.nativeElement as HTMLInputElement;
-    const newValue = inputElement.value.replace(/[^a-zA-Z]/g, '');
-    inputElement.value = newValue;
-    // event.preventDefault();
+    inputElement.value = inputElement.value.replace(/[^a-zA-Z]/g, '');
+    event.preventDefault();
   }
 }

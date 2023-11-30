@@ -5,26 +5,12 @@ import { FormGroup } from '@angular/forms';
 export class DataStorageService {
   storeData(parentForm: FormGroup) {
     sessionStorage.setItem(
-      'fatcaStatusData',
-      JSON.stringify(parentForm.get('fatcaStatusForm').value)
+      'accountOpeningData',
+      JSON.stringify(parentForm.value),
     );
-    sessionStorage.setItem(
-      'personalDetailsData',
-      JSON.stringify(parentForm.get('personalDetailsForm').value)
-    );
-    sessionStorage.setItem(
-      'financialDetailsData',
-      JSON.stringify(parentForm.get('financialDetailsForm').value)
-    );
-    // sessionStorage.setItem(
-    //   'reasonToOpenData',
-    //   JSON.stringify(parentForm.get('reasonToOpenForm').value)
-    // );
     sessionStorage.setItem(
       'taxResidenciesData',
-      JSON.stringify(
-        parentForm.get('fatcaStatusForm').get('taxResidencies').value
-      )
+      JSON.stringify(parentForm.get('fatcaStatusForm.taxResidencies').value),
     );
   }
 

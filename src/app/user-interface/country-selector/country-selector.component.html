@@ -4,7 +4,7 @@
     matInput
     appAlphabetOnly
     placeholder="Select a country"
-    [formControl]="control"
+    [formControl]="getControl()"
     [matAutocomplete]="auto"
   />
   <mat-autocomplete #auto="matAutocomplete">
@@ -16,12 +16,16 @@
     </mat-option>
   </mat-autocomplete>
   <mat-error
-    *ngIf="control.hasError('required') && !control.hasError('invalidValue')"
+    *ngIf="
+      getControl().hasError('required')
+    "
   >
     *Please select a country.
   </mat-error>
   <mat-error
-    *ngIf="control.hasError('invalidValue') && !control.hasError('required')"
+    *ngIf="
+      getControl().hasError('invalidValue') && !control.hasError('required')
+    "
   >
     *Please enter a valid country.
   </mat-error>

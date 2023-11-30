@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { AbstractControl, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { CountryDataService } from '../../utilities/country-data.service';
@@ -12,7 +11,7 @@ import { CountryDataService } from '../../utilities/country-data.service';
 })
 export class CountrySelectorComponent implements OnInit {
   @Input() label: string;
-  @Input() control: FormControl = new FormControl();
+  @Input() control: AbstractControl;
 
   filteredCountries: Observable<string[]>;
 
@@ -22,8 +21,8 @@ export class CountrySelectorComponent implements OnInit {
     this.filteredCountries = this.control.valueChanges.pipe(
       startWith(''),
       map((country) =>
-        country ? this._filter(country) : this.cds.getCountries()
-      )
+        country ? this._filter(country) : this.cds.getCountries(),
+      ),
     );
   }
 
@@ -32,5 +31,9 @@ export class CountrySelectorComponent implements OnInit {
     return this.cds
       .getCountries()
       .filter((country) => country.toLowerCase().indexOf(filterValue) === 0);
+  }
+
+  getControl() {
+    return this.control as FormControl;
   }
 }
